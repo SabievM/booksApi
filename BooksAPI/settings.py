@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+from dotenv import load_dotenv
 import os
 import dj_database_url
 from pathlib import Path
@@ -82,11 +83,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BooksAPI.wsgi.application'
 
-
-
+load_dotenv()
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Books',
+#         'USER': 'Musa',
+#         'PASSWORD': 'Musa',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
