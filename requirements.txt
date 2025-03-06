@@ -7,3 +7,4 @@ django_filter==25.1
 dj-rest-auth
 django-allauth
 django-cors-headers
+psycopg
