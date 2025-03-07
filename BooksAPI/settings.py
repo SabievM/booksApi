@@ -17,7 +17,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hs#lysgxwp0zm6jkj!6^r!oolhy%r(3agj*d(+-d-l7%wd$jsu'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -45,7 +45,7 @@ SITE_ID = 1
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE": 40,
+    "PAGE_SIZE": 10,
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
@@ -84,20 +84,33 @@ TEMPLATES = [
 WSGI_APPLICATION = 'BooksAPI.wsgi.application'
 
 load_dotenv()
+DATABASES = {
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+}
+print(DATABASES)
 # DATABASES = {
-#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Books',
+#         'USER': 'books_mpvl_user',
+#         'PASSWORD': 'xEjo28YtoBXpC4hBDaVa9PpNstdpmaxc',
+#         'HOST': 'dpg-cv4ohetumphs73ajutl0-a',
+#         'PORT': '5432',
+#     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Books',
-        'USER': 'Musa',
-        'PASSWORD': 'Musa',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DATABASE_URL').split('/')[-1],
+#         'USER': os.getenv('DATABASE_URL').split(':')[1].split('//')[1],
+#         'PASSWORD': os.getenv('DATABASE_URL').split(':')[2].split('@')[0],
+#         'HOST': os.getenv('DATABASE_URL').split('@')[1].split(':')[0],
+#         'PORT': os.getenv('DATABASE_URL').split(':')[-1].split('/')[0],
+#     }
+# }
+
+#print('DATABASES', DATABASES)
 
 
 AUTH_PASSWORD_VALIDATORS = [
