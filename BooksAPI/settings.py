@@ -84,20 +84,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'BooksAPI.wsgi.application'
 
 load_dotenv()
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-}
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Books',
-#         'USER': 'Musa',
-#         'PASSWORD': 'Musa',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
+#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Books',
+        'USER': 'Musa',
+        'PASSWORD': 'Musa',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
