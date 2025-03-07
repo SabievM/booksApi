@@ -83,34 +83,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BooksAPI.wsgi.application'
 
-load_dotenv()
+
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
 }
-print(DATABASES)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Books',
-#         'USER': 'books_mpvl_user',
-#         'PASSWORD': 'xEjo28YtoBXpC4hBDaVa9PpNstdpmaxc',
-#         'HOST': 'dpg-cv4ohetumphs73ajutl0-a',
-#         'PORT': '5432',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DATABASE_URL').split('/')[-1],
-#         'USER': os.getenv('DATABASE_URL').split(':')[1].split('//')[1],
-#         'PASSWORD': os.getenv('DATABASE_URL').split(':')[2].split('@')[0],
-#         'HOST': os.getenv('DATABASE_URL').split('@')[1].split(':')[0],
-#         'PORT': os.getenv('DATABASE_URL').split(':')[-1].split('/')[0],
-#     }
-# }
-
-#print('DATABASES', DATABASES)
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -132,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
